@@ -2,4 +2,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def costumers(request):
-    return HttpResponse('Page costumers')
+    return render(request, 'costumers.html')
