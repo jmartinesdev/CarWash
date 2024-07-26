@@ -38,8 +38,26 @@
             <div class="add-cars">
                 <h3>Cars</h3>
                 <span class="btn-add-cars" onclick="add_car()">+ Add a Car</span>
+
                 <div id="form-car">
+                    {% for car, r_car, y in cars %}
+                        <br>
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" placeholder="car" class="form-control" name="car" value="{{car}}">
+                                </div>
+
+                                <div class="col-md">
+                                    <input type="text" placeholder="reg-car" class="form-control" name="reg_car" value="{{reg_car}}">
+                                </div>
+
+                                <div class="col-md">
+                                    <input type="number" placeholder="year" class="form-control" name="year" value="{{years}}">
+                                </div>
+                            </div>
+                        {% endfor%}
                 </div>
+
             </div>
             <br>
             <input type="submit" value="Register" class="btn-main">
