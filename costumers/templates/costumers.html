@@ -22,18 +22,18 @@
             {% csrf_token %}
             <div class="col-md">
                 <p>First Name:</p>
-                <input type="text" class="form-control" placeholder="First name" name="firstname">
+                <input type="text" class="form-control" placeholder="First name" name="firstname" value="{{firstname}}">
             </div>
             <div class="col-md">
                 <p>Last Name:</p>
-                <input type="text" class="form-control" placeholder="Last name" name="lastname">
+                <input type="text" class="form-control" placeholder="Last name" name="lastname" value="{{lastname}}">>
             </div>
             <br>
             <p>Email:</p>
-            <input type="email" class="form-control" placeholder="name@email.com" name="email">
+            <input type="email" class="form-control" placeholder="name@email.com" name="email" value="{{email}}">>
             <br>
             <p>Phone Number:</p>
-            <input type="text" class="form-control" placeholder="Phone number" name="phone">
+            <input type="text" class="form-control" placeholder="Phone number" name="phone" value="{{phone}}">>
             <hr style="background-color:gray;">
             <div class="add-cars">
                 <h3>Cars</h3>
