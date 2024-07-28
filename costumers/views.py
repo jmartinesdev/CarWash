@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import Costumers, Cars
 import re
 
@@ -39,5 +39,8 @@ def costumers(request):
         
         return HttpResponse('teste')
 
-
-        
+def upd_costumer(request):
+    id_costumer = request.POST.get('id_costumer')
+    costumer = Costumers.objects.filter(id=id_costumer)
+    print(costumer)
+    return JsonResponse({"teste": 1})

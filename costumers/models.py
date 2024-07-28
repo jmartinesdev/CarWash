@@ -8,8 +8,8 @@ class Costumers(models.Model):
     email = models.CharField(max_length=50)
     phone = models.CharField(max_length=10)
     
-    def __str__(self) -> str:
-        return self.name
+    def __str__(self):
+        return f"{self.firstname} {self.lastname}"
     
 class Cars(models.Model):
     car = models.CharField(max_length=20)

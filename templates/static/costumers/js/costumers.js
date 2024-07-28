@@ -36,25 +36,32 @@ function display_form(type) {
 }
 
 function data_costumer(){
-    costumer = document.getElementById("costumer-select");
-    csrf_token = document.querySelector('[name=csrfmiddlewaretoken]')
-    id_costumer = costumer.value
+    const costumer = document.getElementById("costumer-select");
+    const csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const id_costumer = costumer.value;
 
-    data = new FormData()
-    data.append('id_costumer', id_costumer)
+    const data = new FormData();
+    data.append('id_costumer', id_costumer);
 
-    fetch("costumer/update_costumer/", {
+    fetch("update_costumer/", {
         method: "POST",
         headers: {
-            'X-CSRF_Token': csrf_token,
+            'X-CSRFToken': csrf_token,  // Corrigido cabeçalho CSRF
         },
         body: data 
+    })
+    .then(function(response){
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(function(data){
+        console.log('Update successful:', data);
+    })
+    .catch(function(error){
+        console.error('Error:', error);
+    });
 
-    }).then(function(result){
-        return result.json()
-    }).then(function(data)){
-        console.log('teste')
-    }
+    console.log(data)
 }
-
-
