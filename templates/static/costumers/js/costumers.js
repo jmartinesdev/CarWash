@@ -22,3 +22,39 @@ function add_car() {
     }
 }
 
+function display_form(type) {
+    var add_costumer = document.getElementById('add_costumer');
+    var upd_costumer = document.getElementById('upd_costumer');
+
+    if (type == "1") {
+        upd_costumer.style.display = "none";
+        add_costumer.style.display = "block";
+    } else if (type == "2") {
+        upd_costumer.style.display = "block";
+        add_costumer.style.display = "none";
+    }
+}
+
+function data_costumer(){
+    costumer = document.getElementById("costumer-select");
+    csrf_token = document.querySelector('[name=csrfmiddlewaretoken]')
+    id_costumer = costumer.value
+
+    data = new FormData()
+    data.append('id_costumer', id_costumer)
+
+    fetch("costumer/update_costumer/", {
+        method: "POST",
+        headers: {
+            'X-CSRF_Token': csrf_token,
+        },
+        body: data 
+
+    }).then(function(result){
+        return result.json()
+    }).then(function(data)){
+        console.log('teste')
+    }
+}
+
+

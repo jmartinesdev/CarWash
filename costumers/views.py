@@ -5,7 +5,8 @@ import re
 
 def costumers(request):
     if request.method == "GET":
-        return render(request, 'costumers.html')
+        costumer_list = Costumers.objects.all()
+        return render(request, 'costumers.html', {'costumer': costumer_list})
     elif request.method == "POST":
         firstname = request.POST.get('firstname')
         lastname = request.POST.get('lastname')
@@ -30,7 +31,7 @@ def costumers(request):
             phone = phone
         )
         
-        #filtered_customers.save()
+        filtered_customers.save()
         
         x = list(zip(car, reg_number, year))
         

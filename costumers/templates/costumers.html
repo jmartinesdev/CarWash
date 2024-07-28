@@ -8,16 +8,16 @@
 {% block dashboard %}
 <div class="container">
     <div class="row">
-        <div class="col-md card-dashboard">
+        <div onclick="display_form('1')" class="col-md card-dashboard">
             <p class="text-card">Add Customer</p> 
         </div>
 
-        <div class="col-md card-dashboard">
+        <div onclick="display_form('2')" class="col-md card-dashboard">
             <p class="text-card">Update Customer</p> 
         </div>
     </div>
 
-    <div class="add-client">
+    <div id="add_costumer" class="add-costumer">
         <form action="{% url 'costumers' %}" method="POST">
             {% csrf_token %}
             <div class="col-md">
@@ -62,6 +62,15 @@
             <br>
             <input type="submit" value="Register" class="btn-main">
         </form>
+    </div>
+
+   <div id="upd_costumer"> 
+        <p>Update Customer:</p>
+        <select id="costumer-select" onchange="data_costumer()" class='form-control'>
+        {% for costumer in costumer %}
+            <option value="{{ costumer.id }}">{{ costumer.firstname }}</option>
+        {% endfor %}
+        </select>
     </div>
 </div>
 <script src="{% static 'costumers/js/costumers.js' %}"></script>
