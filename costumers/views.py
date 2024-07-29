@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import Costumers, Cars
 import re
+from django.core import serializers
+import json
 
 def costumers(request):
     if request.method == "GET":
@@ -34,13 +36,11 @@ def costumers(request):
         filtered_customers.save()
         
         x = list(zip(car, reg_number, year))
-        
-        print(x)
-        
+                
         return HttpResponse('teste')
 
 def upd_costumer(request):
     id_costumer = request.POST.get('id_costumer')
     costumer = Costumers.objects.filter(id=id_costumer)
-    print(costumer)
-    return JsonResponse({"teste": 1})
+    costumer_json = json.loads(serializers.serialize('json', costumer))[0]['fields']
+    return JsonResponse(costumer_json)
